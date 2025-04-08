@@ -1,35 +1,90 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.scss";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+  // Navigate,
+} from "react-router-dom";
+
+import Home from "./pages/home/Home";
+import Login from "./pages/auth/login/Login";
+import Register from "./pages/auth/register/Register";
+import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
+import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
+import ConfirmAccount from "./pages/auth/confirmAccount/ConfirmAccount";
+import InterestTags from "./pages/auth/interesTags/InterestTags";
+import SetUpProfile from "./pages/auth/setupProfile/SetUpProfile";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const Layout = () => {
+    return (
+      <div>
+        <Outlet />
+      </div>
+    );
+  };
+
+  const AuthLayout = () => {
+    return (
+      <div className="auth-wrapper">
+        <Outlet />
+      </div>
+    );
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+      ],
+    },
+    {
+      path: "/auth",
+      element: <AuthLayout />,
+      children: [
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+        {
+          path: "forgot-password",
+          element: <ForgotPassword />,
+        },
+        {
+          path: "confirm-account",
+          element: <ConfirmAccount />,
+        },
+        {
+          path: "interest-tags",
+          element: <InterestTags />,
+        },
+        {
+          path: "setup-profile",
+          element: <SetUpProfile />,
+        },
+        {
+          path: "reset-password/:resetToken",
+          element: <ResetPassword />,
+        },
+      ],
+    },
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
-export default App
+export default App;

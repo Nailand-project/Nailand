@@ -1,0 +1,78 @@
+@use "../../../global.scss" as *;
+
+.interest-tags {
+  background: linear-gradient(to bottom, var(--bg-gradient));
+  display: flex;
+  align-items: center;
+  height: 90vh;
+  flex-direction: column;
+  min-width: 350px;
+  max-width: 350px;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 15px;
+
+  .itags-top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h2 {
+      font-weight: 500;
+      font-size: var(--font-large);
+    }
+
+    p {
+      font-size: var(--font-xsmall);
+    }
+
+    .customize {
+      padding: 6px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+  }
+
+  .itags-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        padding: 8px;
+        min-width: 100px;
+        border-radius: 8px;
+        font-size: var(--font-xsmall);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+
+        &.selected {
+          background-color: var(--bg-dark);
+        }
+      }
+    }
+
+    button {
+      width: 150px;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 14px 28px;
+      background-color: var(--color-primary);
+      color: var(--color-base);
+      width: 100%;
+    }
+  }
+}
