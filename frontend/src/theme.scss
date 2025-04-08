@@ -1,0 +1,67 @@
+@use "./global.scss" as *;
+
+// =============================
+// Single Theme (Light)
+// =============================
+:root {
+  // Colors
+  --bg-base: #444444;
+  --bg-primary: #271b17;
+  --bg-gradient: #80787833;
+  --bg-gray-300: #927f79;
+  --bg-dark: #553a32;
+
+  --color-white: #ffffff;
+  --color-primary: #ffc107;
+  --color-light: #fdfdfd;
+  --color-gray: #b2b2b2;
+  --border-color: #b4a7a3;
+  --error: #dd2c00;
+  --success: #44ba5d;
+
+  // Font sizes
+  --font-xsmall: 12px;
+  --font-small: 15px;
+  --font-regular: 16px;
+  --font-large: 30px;
+  --font-xlarge: 36px;
+  --font-xxlarge: 48px;
+  --font-family: "Montserrat", sans-serif;
+}
+
+// Base reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-base);
+  font-size: var(--font-regular);
+  color: var(--color-white);
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+.auth-wrapper {
+  background: url("/background-image.png") no-repeat center center / cover;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+  height: 96vh;
+  overflow: hidden;
+  padding: 73px;
+
+  @include tabLet {
+    height: 100vh;
+  }
+}
+
+a {
+  color: var(--color-primary);
+}
