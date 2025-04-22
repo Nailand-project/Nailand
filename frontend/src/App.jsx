@@ -15,25 +15,20 @@ import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
 import ConfirmAccount from "./pages/auth/confirmAccount/ConfirmAccount";
 import InterestTags from "./pages/auth/interesTags/InterestTags";
 import SetUpProfile from "./pages/auth/setupProfile/SetUpProfile";
-import ProfileHeader from "./components/profile/profileHeader/ProfileHeader";
-import ProfileLeftBar from "./components/profile/profileLeftBar/ProfileLeftBar";
-import ProfileRightBar from "./components/profile/profileRightBar/ProfileRightBar";
 import EnterCode from "./pages/auth/enterCode/EnterCode";
 import PasswordChanged from "./pages/auth/passwordChanged/PasswordChanged";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Profile from "./pages/profile/Profile";
+import MainHeader from "./components/mainHeader/MainHeader";
 
 function App() {
   const Layout = () => {
     return (
-      <div className="profile-wrapper">
-        <div className="profile-container">
-          <ProfileHeader />
-          <div className="profile-content">
-            <ProfileLeftBar />
-            <Outlet />
-            <ProfileRightBar />
-          </div>
+      <div className="main-wrapper">
+        <div className="main-content">
+          <MainHeader />
+          <Outlet />
         </div>
       </div>
     );
@@ -63,6 +58,10 @@ function App() {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
         },
       ],
     },

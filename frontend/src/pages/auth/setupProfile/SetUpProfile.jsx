@@ -8,7 +8,7 @@ const SetUpProfile = () => {
   const [profilePic, setProfilePic] = useState(null);
   const [created, setCreated] = useState(false);
   const [inputs, setInputs] = useState({
-    fullNameL: "",
+    fullName: "",
     userName: "",
     gender: "",
     email: "",
@@ -20,7 +20,7 @@ const SetUpProfile = () => {
 
   const navigate = useNavigate();
 
-  const { fullNameL, userName, gender, email, country, address, phone, bio } =
+  const { fullName, userName, gender, email, country, address, phone, bio } =
     inputs;
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const SetUpProfile = () => {
   console.log(inputs);
 
   const handleContinue = async () => {
-    navigate("/");
+    navigate("/profile");
   };
 
   return (
@@ -56,7 +56,7 @@ const SetUpProfile = () => {
                 <input
                   type="text"
                   name="fullName"
-                  value={fullNameL}
+                  value={fullName}
                   onChange={handleChange}
                 />
               </div>

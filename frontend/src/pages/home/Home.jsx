@@ -1,13 +1,7 @@
 import "./home.scss";
 
 const Home = () => {
-  return (
-    <div className="home">
-      <div className="wrapper">
-        <div className="post">post</div>
-      </div>
-    </div>
-  );
+  return <div className="home"></div>;
 };
 
 export default Home;

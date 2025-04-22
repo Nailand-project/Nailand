@@ -57,11 +57,11 @@ const Register = () => {
         <form>
           <h2 className="title">Create your account</h2>
           <div className="social-login-container">
-            <button onClick={handleGoogleAuth}>
+            <button className="social-btn" onClick={handleGoogleAuth}>
               <img src="/google-logo.png" className="google" />
               <span>Continue with Google</span>
             </button>
-            <button onClick={handleAppleAuth}>
+            <button className="social-btn" onClick={handleAppleAuth}>
               <img src="/apple-logo.png" className="google" />
               <span>Continue with Apple</span>
             </button>
@@ -137,11 +137,11 @@ const Register = () => {
           </div>
           <button onClick={handleCreate}>Create account</button>
           <div className="agree-container">
-            <div className="agree">
+            <div className="terms">
               <input type="checkbox" />
               <span>I agree to Nailand's terms and condition</span>
             </div>
-            <span className="redirect">
+            <span className="navigate">
               Already have an account? <Link to={"/auth/login"}>Login</Link>
             </span>
           </div>

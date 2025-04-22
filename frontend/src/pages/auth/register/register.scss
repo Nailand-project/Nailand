@@ -29,7 +29,7 @@
   }
 
   .reg-right {
-    width: 100%;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,12 +40,11 @@
       background: linear-gradient(to top, var(--bg-gradient));
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 8px;
       width: 400px;
       height: 80%;
       border-radius: 15px;
       z-index: 2;
-      display: flex;
 
       @include mobile {
         max-width: 350px;
@@ -62,7 +61,7 @@
         flex-direction: column;
         gap: 10px;
 
-        button {
+        .social-btn {
           width: 100%;
           display: flex;
           align-items: center;
@@ -71,6 +70,7 @@
           cursor: pointer;
           border: none;
           border-radius: 8px;
+          padding: 8px;
           gap: 10px;
           font-weight: 400;
           color: var(--color-neutral-50);
@@ -136,14 +136,6 @@
             color: var(--color-gray);
           }
         }
-
-        input {
-          padding: 10px;
-          background-color: transparent;
-          border: 1px solid var(--border-color);
-          color: var(--color-base);
-          border-radius: 8px;
-        }
       }
 
       .validations {
@@ -177,17 +169,57 @@
       }
 
       .agree-container {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        display: flex;
+        gap: 5px;
         align-items: center;
         justify-content: center;
 
-        .agree,
-        .redirect {
+        .terms {
           display: flex;
           align-items: center;
           gap: 5px;
+          font-size: var(--font-xsmall);
+
+          input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 13px; // Change this to scale
+            height: 13px;
+            border: 1px solid var(--border-color); // Example primary color
+            border-radius: 4px;
+            background-color: transparent;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            padding: 0;
+            margin: 0;
+            vertical-align: middle;
+
+            &:checked {
+              background-color: var(--success);
+            }
+
+            &:checked::after {
+              content: "";
+              position: absolute;
+              top: 2px;
+              left: 5px;
+              width: 3px;
+              height: 8px;
+              border: solid white;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+              transform-origin: center;
+              display: block;
+            }
+          }
+        }
+
+        .navigate {
+          align-items: center;
           font-size: var(--font-xsmall);
         }
       }

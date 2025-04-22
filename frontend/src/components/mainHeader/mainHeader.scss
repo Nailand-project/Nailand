@@ -1,17 +1,18 @@
-.profile-header {
-  width: 100vw;
+.main-header {
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
-  //   background-color: red;
 
-  .wrapper {
+  .header-wrapper {
     width: 100%;
     padding: 10px;
     display: flex;
     align-items: center;
     background-color: var(--color-neutral-2-900);
+    border-radius: none;
+    gap: 20px;
 
     .ph-left {
       flex: 2;
@@ -23,9 +24,11 @@
       .logo {
         font-size: 20px;
         letter-spacing: 5;
+        width: 20%;
       }
 
       .scan-btn {
+        width: 80%;
         display: flex;
         align-items: center;
         background-color: var(--color-neutral-2-700);

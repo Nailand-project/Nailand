@@ -83,35 +83,38 @@
             gap: 8px;
             font-size: var(--font-xsmall);
 
-            input {
+            input[type="checkbox"] {
               appearance: none;
               -webkit-appearance: none;
               -moz-appearance: none;
-              width: 18px;
-              height: 18px;
-              border: 2px solid var(--border-color, #aaa);
+              width: 14px; // Change this to scale
+              height: 14px;
+              border: 1px solid var(--border-color); // Example primary color
               border-radius: 4px;
               background-color: transparent;
               cursor: pointer;
-              position: relative;
               display: inline-block;
-              transition: background-color 0.2s, border-color 0.2s;
+              position: relative;
+              padding: 0;
+              margin: 0;
+              vertical-align: middle;
 
               &:checked {
                 background-color: var(--success);
-                // border-color: var(--color-secondary-500);
               }
 
               &:checked::after {
                 content: "";
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 4px;
+                top: 2px;
+                left: 5px;
+                width: 3px;
                 height: 8px;
                 border: solid white;
                 border-width: 0 2px 2px 0;
-                transform: translate(-50%, -50%) rotate(45deg);
+                transform: rotate(45deg);
+                transform-origin: center;
+                display: block;
               }
             }
           }
@@ -124,7 +127,7 @@
       border: none;
       cursor: pointer;
       border-radius: 8px;
-      padding: 14px 28px;
+      padding: 10px 28px;
       background-color: var(--color-secondary-500);
       color: var(--neutral-color-1-50);
       width: 100%;
