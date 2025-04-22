@@ -67,13 +67,13 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: var(--bg-gray-300);
+          background-color: var(--color-primary-300);
           cursor: pointer;
           border: none;
           border-radius: 8px;
           gap: 10px;
           font-weight: 400;
-          color: var(--color-light);
+          color: var(--color-neutral-50);
 
           img {
             width: var(--font-regular);
@@ -94,7 +94,7 @@
         .line {
           height: 0.3px;
           flex: 10;
-          background-color: var(--bg-gray);
+          background-color: var(--color-primary-200);
         }
 
         .or {
@@ -170,8 +170,8 @@
         border: none;
         padding: 10px;
         width: 100%;
-        background-color: var(--color-primary);
-        color: var(--color-base);
+        background-color: var(--color-secondary-500);
+        color: var(--neutral-color-1-50);
         border-radius: 8px;
         cursor: pointer;
       }

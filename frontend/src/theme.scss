@@ -17,7 +17,56 @@
   --color-gray: #b2b2b2;
   --border-color: #b4a7a3;
   --error: #dd2c00;
-  --success: #44ba5d;
+  --success: #72b01d;
+
+  // DESIGN COLORS
+  // Primary colors
+  --color-primary-50: #efeceb;
+  --color-primary-100: #cdc4c1;
+  --color-primary-200: #b4a7a3;
+  --color-primary-300: #927f79;
+  --color-primary-400: #7d665f;
+  --color-primary-500: #5d4037;
+  --color-primary-600: #553a32;
+  --color-primary-700: #422d27;
+  --color-primary-800: #33231e;
+  --color-primary-900: #271b17;
+
+  //Secondary colors
+  --color-secondary-50: #fff9e6;
+  --color-secondary-100: #ffecb2;
+  --color-secondary-200: #ffe28d;
+  --color-secondary-300: #ffd559;
+  --color-secondary-400: #ffcd39;
+  --color-secondary-500: #ffc107;
+  --color-secondary-600: #e8b006;
+  --color-secondary-700: #b58905;
+  --color-secondary-800: #8c6a04;
+  --color-secondary-900: #6b5103;
+
+  //Secondary neutral colors 1
+  --color-neutral-1-50: #ffffff;
+  --color-neutral-1-100: #fdfdfd;
+  --color-neutral-1-200: #fdfdfd;
+  --color-neutral-1-300: #fcfcfc;
+  --color-neutral-1-400: #fbfbfb;
+  --color-neutral-1-500: #fafafa;
+  --color-neutral-1-600: #e4e4e4;
+  --color-neutral-1-700: #b2b2b2;
+  --color-neutral-1-800: #8a8a8a;
+  --color-neutral-1-900: #696969;
+
+  //Secondary neutral colors 2
+  --color-neutral-2-50: #ececec;
+  --color-neutral-2-100: #c4c4c4;
+  --color-neutral-2-200: #a8a8a8;
+  --color-neutral-2-300: #808080;
+  --color-neutral-2-400: #686868;
+  --color-neutral-2-500: #424242;
+  --color-neutral-2-600: #3c3c3c;
+  --color-neutral-2-700: #2f2f2f;
+  --color-neutral-2-800: #242424;
+  --color-neutral-2-900: #1c1c1c;
 
   // Font sizes
   --font-xsmall: 12px;
@@ -62,6 +111,51 @@ body {
   }
 }
 
+.profile-wrapper {
+  background: url("/background-image.png") no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .profile-content {
+      display: flex;
+      width: 100vw;
+      margin-top: 60px;
+      padding: 10px;
+      gap: 20px;
+    }
+  }
+}
+
 a {
-  color: var(--color-primary);
+  color: var(--color-secondary-500);
+}
+
+/* Global scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* Vertical scrollbar width */
+  height: 8px; /* Horizontal scrollbar height */
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }

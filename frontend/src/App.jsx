@@ -15,12 +15,22 @@ import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
 import ConfirmAccount from "./pages/auth/confirmAccount/ConfirmAccount";
 import InterestTags from "./pages/auth/interesTags/InterestTags";
 import SetUpProfile from "./pages/auth/setupProfile/SetUpProfile";
+import ProfileHeader from "./components/profile/profileHeader/ProfileHeader";
+import ProfileLeftBar from "./components/profile/profileLeftBar/ProfileLeftBar";
+import ProfileRightBar from "./components/profile/profileRightBar/ProfileRightBar";
 
 function App() {
   const Layout = () => {
     return (
-      <div>
-        <Outlet />
+      <div className="profile-wrapper">
+        <div className="profile-container">
+          <ProfileHeader />
+          <div className="profile-content">
+            <ProfileLeftBar />
+            <Outlet />
+            <ProfileRightBar />
+          </div>
+        </div>
       </div>
     );
   };
@@ -32,6 +42,14 @@ function App() {
       </div>
     );
   };
+
+  // const ProfileLayout = () => {
+  //   return (
+  //     <div className="auth-wrapper">
+  //       <Outlet />
+  //     </div>
+  //   );
+  // };
 
   const router = createBrowserRouter([
     {

@@ -1,0 +1,14 @@
+.home {
+  flex: 5;
+
+  .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .post {
+      // background-color: var(--color-primary-900);
+      background-color: skyblue;
+    }
+  }
+}
