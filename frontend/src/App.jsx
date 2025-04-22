@@ -18,6 +18,10 @@ import SetUpProfile from "./pages/auth/setupProfile/SetUpProfile";
 import ProfileHeader from "./components/profile/profileHeader/ProfileHeader";
 import ProfileLeftBar from "./components/profile/profileLeftBar/ProfileLeftBar";
 import ProfileRightBar from "./components/profile/profileRightBar/ProfileRightBar";
+import EnterCode from "./pages/auth/enterCode/EnterCode";
+import PasswordChanged from "./pages/auth/passwordChanged/PasswordChanged";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const Layout = () => {
@@ -94,6 +98,14 @@ function App() {
           path: "reset-password/:resetToken",
           element: <ResetPassword />,
         },
+        {
+          path: "enter-code",
+          element: <EnterCode />,
+        },
+        {
+          path: "password-changed",
+          element: <PasswordChanged />,
+        },
       ],
     },
   ]);
@@ -101,6 +113,18 @@ function App() {
   return (
     <div className="app">
       <RouterProvider router={router} />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }
