@@ -181,7 +181,7 @@ input[type="checkbox"]:checked {
    top: 50% !important;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 50px !important;
+   width: 50px;
    z-index: 9999;
    pointer-events: none;
  }
@@ -191,7 +191,7 @@ input[type="checkbox"]:checked {
    color: #fff !important;
    font-weight: 500;
    border-radius: 8px;
-   padding: 12px 20px;
+   padding: 16px;
    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
    pointer-events: auto;
    font-size: var(--font-xsmall);

@@ -34,7 +34,6 @@ const Login = () => {
     
         localStorage.setItem("token", token);
         toast.success("Login successful!", {
-          position: "top-center",
           autoClose: 3000,
         });
         navigate("/home"); 
@@ -72,7 +71,20 @@ const Login = () => {
             </div>
           </div>
           <div className="col-md-6 login-right">
-            <div className="wrapper">
+            <div className="wrapper" style={{position:"relative"}}>
+            <ToastContainer
+                autoClose={3000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                className="custom-toast-container"
+                toastClassName="custom-toast"
+                style={{position:"absolute"}}
+              />
               <h2>Log In</h2>
               <div className="d-flex justify-content-center my-2">
               <a
@@ -99,20 +111,6 @@ const Login = () => {
                 <span className="mx-2 text-light">or</span>
                 <div className="flex-grow-1 border-bottom"></div>
               </div>
-
-              <ToastContainer
-                position="top-center"
-                autoClose={3000}
-                hideProgressBar={true}
-                newestOnTop={false}
-                // closeOnClick
-                // rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                className="custom-toast-container"
-                toastClassName="custom-toast"
-              />
               <form className="" onSubmit={formik.handleSubmit}>
                 <dt className="label text-light">Enter Email</dt>
                 <dd className="login-input">

@@ -96,7 +96,7 @@ function App() {
   return (
     <div className="app">
       <RouterProvider router={router} />
-      <ToastContainer
+      {/* <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
@@ -107,7 +107,7 @@ function App() {
         draggable
         pauseOnHover
         theme="colored"
-      />
+      /> */}
     </div>
   );
 }
