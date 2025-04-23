@@ -2,17 +2,16 @@ import React from "react";
 import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import axios from "axios"
+import axios from "axios";
 import * as Yup from "yup";
 import { FcGoogle } from "react-icons/fc";
 import { useEffect, useState } from "react";
 import { FaApple, FaEye, FaEyeSlash } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -22,21 +21,19 @@ const Login = () => {
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .required("Email is required"),
-      password: Yup.string()
-        .required("Password is required"),
+      email: Yup.string().required("Email is required"),
+      password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       try {
         const res = await axios.post("http://localhost:5000/api/login", values);
         const { token } = res.data;
-    
+
         localStorage.setItem("token", token);
         toast.success("Login successful!", {
           autoClose: 3000,
         });
-        navigate("/home"); 
+        navigate("/home");
       } catch (err) {
         if (err.response?.data?.message) {
           setErrors({ password: err.response.data.message });
@@ -56,7 +53,6 @@ const Login = () => {
     },
   });
 
-  
   return (
     <div className="login">
       <div className="container">
@@ -87,23 +83,23 @@ const Login = () => {
               />
               <h2>Log In</h2>
               <div className="d-flex justify-content-center my-2">
-              <a
-                href="http://localhost:5000/auth/google"
-                className="w-100 btn btn-light google-apple-btn d-flex align-items-center justify-content-center"
-              >
-                <FcGoogle className="icon me-2" />
-                Continue with Google
-              </a>
+                <a
+                  href="http://localhost:5000/auth/google"
+                  className="w-100 btn btn-light google-apple-btn d-flex align-items-center justify-content-center"
+                >
+                  <FcGoogle className="icon me-2" />
+                  Continue with Google
+                </a>
               </div>
 
               <div className="d-flex justify-content-center my-2">
-              <a
-                href="http://localhost:5000/auth/apple"
-                className="w-100 btn btn-light google-apple-btn d-flex align-items-center justify-content-center"
-              >
-                <FaApple className="icon me-2" />
-                Continue with Apple
-              </a>
+                <a
+                  href="http://localhost:5000/auth/apple"
+                  className="w-100 btn btn-light google-apple-btn d-flex align-items-center justify-content-center"
+                >
+                  <FaApple className="icon me-2" />
+                  Continue with Apple
+                </a>
               </div>
 
               <div className="d-flex align-items-center my-3">
@@ -141,7 +137,7 @@ const Login = () => {
                 <dt className="label text-light">Enter Password</dt>
                 <dd className="login-input password-input">
                   <input
-                    type={showPassword ? "text": "password"}
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     className={`form-control ${
                       formik.touched.password && formik.errors.password
@@ -161,7 +157,7 @@ const Login = () => {
                       top: "50%",
                       transform: "translateY(-50%)",
                       cursor: "pointer",
-                      color: "#888"
+                      color: "#888",
                     }}
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -178,18 +174,23 @@ const Login = () => {
                   <span>{formik.errors.password}</span>
                 </dd>
                 <div className="remember-forgot">
-                  <label className="remember-box">
+                  <div className="remember-box">
                     <input className="" type="checkbox" />
-                    Remember my password
-                  </label>
-                  <Link to={"/auth/forgot-password"}>Forgot password?</Link>
+                    <span>Remember my password</span>
+                  </div>
+                  <Link className="link" to={"/auth/forgot-password"}>
+                    Forgot password?
+                  </Link>
                 </div>
                 <button type="submit" className=" w-100 login-btn">
                   Log In
                 </button>
                 <div className="signup-link">
                   <p>
-                    Don't have an account? <Link className="a" to={"/auth/register"}>Signup</Link>
+                    Don't have an account?{" "}
+                    <Link className="a" to={"/auth/register"}>
+                      Signup
+                    </Link>
                   </p>
                 </div>
               </form>
