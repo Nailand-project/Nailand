@@ -1,7 +1,7 @@
 import "./home.scss";
 
 const Home = () => {
-  return <div className="home">Welcome to Nailand</div>;
+  return <div className="home"></div>;
 };
 
 export default Home;

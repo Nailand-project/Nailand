@@ -41,19 +41,19 @@ const ConfirmAccount = () => {
           </button>
         </div>
       ) : (
-        <>
-          <h2 className="title">Create your account</h2>
-          <div className="wrapper">
+        <div className="confirm-container">
+          <h2 className="title">Confirm account</h2>
+          <div className="wrapper101">
             <div className="code-container">
               <MdOutlineEmail className="email-icon" />
-              <h3>We sent you a code</h3>
+              <h5>We sent you a code</h5>
               <p>
                 Enter the code we just sent to <br />
                 johnonline201@gmail.com
               </p>
               <form>
                 <OTPInput
-                  isVerified
+                  isVerified={false}
                   value={otp}
                   onChange={(val) => {
                     setOtp(val);
@@ -87,7 +87,7 @@ const ConfirmAccount = () => {
               </div>
             )}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

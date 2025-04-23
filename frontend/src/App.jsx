@@ -17,15 +17,19 @@ import InterestTags from "./pages/auth/interesTags/InterestTags";
 import SetUpProfile from "./pages/auth/setupProfile/SetUpProfile";
 import EnterCode from "./pages/auth/enterCode/EnterCode";
 import PasswordChanged from "./pages/auth/passwordChanged/PasswordChanged";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Profile from "./pages/profile/Profile";
+import MainHeader from "./components/mainHeader/MainHeader";
 
 function App() {
   const Layout = () => {
     return (
-      <div>
-        <Outlet />
+      <div className="main-wrapper">
+        <div className="main-content">
+          <MainHeader />
+          <Outlet />
+        </div>
       </div>
     );
   };
@@ -38,6 +42,14 @@ function App() {
     );
   };
 
+  // const ProfileLayout = () => {
+  //   return (
+  //     <div className="auth-wrapper">
+  //       <Outlet />
+  //     </div>
+  //   );
+  // };
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -46,6 +58,10 @@ function App() {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
         },
       ],
     },
