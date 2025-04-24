@@ -4,12 +4,15 @@ import { useFormik } from "formik";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { MdOutlineEmail } from "react-icons/md";
+import { FaRegClock } from "react-icons/fa";
 
 
 const EnterCode = () => {
 
   const navigate = useNavigate();
   const { state } = useLocation();
+  const [codeTouched, setCodeTouched] = useState(false);
+  const [codeError, setCodeError] = useState("");
   const email = state?.email;
 
   const inputsRef = Array.from({ length: 6 }, () => useRef());
@@ -41,11 +44,14 @@ const EnterCode = () => {
         });
 
         if (response.ok) {
+          setCodeError("");
           navigate("/reset-password", { state: { email } });
         } else {
-          alert("Invalid code");
+          setCodeError("Invalid code. Please try again.");
+          setCodeTouched(true);
         }
       } catch (err) {
+        setCodeError("Something went wrong. Please try again.");
         console.error(err);
       }
     },
@@ -77,8 +83,13 @@ const EnterCode = () => {
          <p>Enter the code we sent to your Email</p>
          <form onSubmit={formik.handleSubmit}>
       <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
-        {formik.values.code.map((digit, index) => (
-          <input
+
+        {formik.values.code.map((digit, index) => {
+          const isTouched = codeTouched;
+          const hasError = !/^\d$/.test(digit);
+
+          return(
+            <input
             key={index}
             type="text"
             maxLength="1"
@@ -86,13 +97,38 @@ const EnterCode = () => {
             value={digit}
             onChange={(e) => handleChange(index, e)}
             onKeyDown={(e) => handleKeyDown(index, e)}
-            className="digit-input"
+            className={`digit-input ${
+              // isTouched && hasError ? "invalid" :
+              // isTouched && !hasError ? "valid" : ""
+              // isTouched
+              //   ? hasError
+              //     ? "invalid" // ❌ red when not a digit
+              //     : "valid"   // ✅ green when digit
+              //     : ""
+              formik.touched.code && formik.errors.code?.[index]
+                ? "is-invalid"
+                : formik.touched.code && !formik.errors.code?.[index] && digit
+                ? "is-valid"
+                : ""
+            }`}
           />
-        ))}
+          );
+         })}
       </div>
-      <p className="text-right text-light mt-3">
-       Resend code in {timeLeft}s
-      </p>
+      {codeError && (
+        <div className="text-danger text-left mt-2">{codeError}</div>
+      )}
+
+      {codeTouched && !codeError && formik.values.code.every(val => /^\d$/.test(val)) && (
+        <div className="text-success text-center mt-2">verification successful!</div>
+      )}
+      <div className="d-flex justify-content-end  mt-3">
+        <p className="text-light mb-0">
+        <FaRegClock />
+         {Math.floor(timeLeft / 60)}:
+         {String(timeLeft % 60).padStart(2, '0')}
+        </p>
+      </div>
       <button type="submit" className="btn mt-5 w-100 reset-btn">
         Continue to reset password
       </button>

@@ -17,6 +17,15 @@
    background-color: transparent;
    color: #ffff;
 }
+
+.digit-input.is-valid {
+   border-color: red;
+}
+ 
+.digit-input.is-invalid {
+   border-color: green;
+}
+
 .reset-btn {
    background-color: #FFC107;
    color: #ffff;

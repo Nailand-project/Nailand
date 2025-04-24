@@ -94,13 +94,19 @@ input[type="checkbox"]:checked {
 
 .login-input input {
   width: 100%;
-  background: transparent;
+  background: transparent !important;
   outline: none;
   border: 1px solid var(--border-color);
   color: var(--color-base);
   border-radius: 8px;
   font-size: 16px;
   padding: 10px;
+
+  input[type="email"]:focus {
+   background-color: transparent !important;
+   box-shadow: none;
+   outline: none;
+ }
 }
 
 .remember-forgot {
@@ -214,15 +220,16 @@ input[type="checkbox"]:checked {
 .custom-toast-container {
   position: absolute !important;
   top: 50% !important;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 50% !important;
+  transform: translate(-30%, -50%) !important;
   width: 50px !important;
   z-index: 9999;
   pointer-events: none;
+  margin-left: 120px;
 }
 
 .custom-toast {
-  background-color: #c4c4c4 !important;
+  background: linear-gradient(to top, #80787899 60%, #80787899 20%) !important;
   color: var(--color-white) !important;
   font-weight: 500;
   border-radius: 8px;

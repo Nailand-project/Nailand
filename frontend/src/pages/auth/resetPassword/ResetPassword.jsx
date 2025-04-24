@@ -1,13 +1,15 @@
 import "./resetPassword.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { useParams, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { toast } from "react-toastify"
+import {ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
 
 const ResetPassword = () => {
   const navigate= useNavigate()
+  
 
   const [showPassword, setShowPassword] = useState(false)
   const { resetToken } = useParams();
@@ -21,11 +23,21 @@ const ResetPassword = () => {
     validationSchema: Yup.object({
       password: Yup.string()
         .min(8, "Password must be at least 8 characters")
-        .required("Password is required"),
+        .required("Password is required")
+        .matches(/\d/, "Must contain a number")
+        .matches(/[!@#$%^&*(),.?":{}|<>]/, "Must contain a special character"),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Confirm your password"),
     }),
+
+  // const password = formik.values.password;
+
+  // const validations = {
+  //   length: password.length >= 8,
+  //   number: /\d/.test(password),
+  //   specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+  // };
     onSubmit: async (values, {setSubmitting}) => {
       try {
         const response = await axios.post(
@@ -45,7 +57,6 @@ const ResetPassword = () => {
         toast.error(
           error.response?.data?.message || "Failed to reset password",
           {
-            position: "top-center",
             autoClose: 3000,
           }
         );
@@ -54,6 +65,14 @@ const ResetPassword = () => {
       }
     },
   });
+
+  const password = formik.values.password;
+
+  const validations = {
+    length: password.length >= 8,
+    number: /\d/.test(password),
+    specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+  };
 
   const handleContinue = async () => {
     navigate("/auth/login");
@@ -70,7 +89,20 @@ const ResetPassword = () => {
         <button onClick={handleContinue} className="btn">Back to log in</button>
      </div>
       ):(
-        <div className="wrapper">
+      <div className="wrapper">
+        <ToastContainer
+           autoClose={3000}
+           hideProgressBar={true}
+           newestOnTop={false}
+           closeOnClick
+           rtl={false}
+           pauseOnFocusLoss
+           draggable
+           pauseOnHover
+           className="custom-toast-container"
+           toastClassName="custom-toast"
+           style={{position:"absolute"}}
+        />
        <h2>Reset Password</h2>
        <p>Please type something you'll remember</p>
      <form onSubmit={formik.handleSubmit}>
@@ -104,12 +136,20 @@ const ResetPassword = () => {
          <span>{formik.errors.password}</span>
        </div>
      )}
-     <div>
-       <span className="val-text">Use 8-10 characters</span>
+     <div className="val-text">
+      {validations.length &&(
+        <span className="valid"><span className="text-success">✓</span>Use 8-10 characters</span>
+      )}
      </div>
-     <span className="val-text">
-     Atleast one number and any numerical like (@#$*_)
-     </span>
+     <div className="val-text">
+     {validations.specialChar && (
+      <span className="valid"><span className="text-success">✓</span> Contains a special character
+      Atleast one number and any numerical like (@#$*_)
+      </span>
+     )}
+     
+     </div>
+     
 
      <dt className="label text-light">Re-enter password</dt>
      <dd className="password-input">
